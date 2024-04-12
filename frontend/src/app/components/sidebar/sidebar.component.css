@@ -1,0 +1,131 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+.infos{
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.sidebar-margin-left{
+    margin-left: 10%;
+}
+
+.sidebar-nested-element-margin-left{
+    margin-left: 20%;
+}
+.sidebar-nested-element{
+    font-size: 14px;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.active{
+    background-color: #cacaca;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #797878;
+}
+.components li{
+    background-color: white;
+    border: 1px solid #cbcbcb;
+}
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+#logout{
+    position: absolute;
+    width: 80%;
+    bottom: 5%;
+    left: 10%;
+    background: rgb(233, 233, 233);
+    color: rgb(98, 12, 196);
+    border-radius: 20px;
+}
+#main {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+.p-font {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+#sidebar {
+    margin-top: 100px;
+    margin-left: 50px;
+    min-width: 250px;
+    max-width: 250px;
+    background: rgb(233, 233, 233);
+    color: #202020;
+    transition: all 0.3s;
+    height: 650px;
+    border: 1px solid rgb(184, 184, 184);
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebarHeader {
+    padding: 20px;
+    background: #aaaaaa;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+#sidebar ul p {
+    color: #818181;
+    padding: 10px;
+}
+
+#sidebar ul li a, #sidebar ul li div {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #6a6a6a;
+    background: #e7e7e7;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #111111;
+    background: #d5d5d5;
+}
+#sidebar ul{
+    position: relative;
+    height: 100%;
+}
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
