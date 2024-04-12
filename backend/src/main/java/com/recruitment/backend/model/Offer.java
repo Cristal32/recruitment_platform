@@ -1,4 +1,4 @@
-package com.recruitment.backend.modal;
+package com.recruitment.backend.model;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -101,35 +101,39 @@ public class Offer implements Serializable {
         return title;
     }
     
-    public String getHq_location() {
+    public String getHqLocation() {
         return hq_location;
     }
     
-    public String getExp_years() {
+    public String getExpYears() {
         return exp_years;
     }
     
-    public String getJob_desc() {
+    public String getJobDesc() {
         return job_desc;
     }
     
-    public String getJob_location() {
+    public String getJobLocation() {
         return job_location;
     }
 
-    public String getCompany_desc() {
+    public String getCompanyDesc() {
         return company_desc;
     }
 
-    public String getRole_respos() {
+    public String getRoleRespos() {
         return role_respos;
     }
 
-    public Date getStart_date() {
+    public String getRoleReqs() {
+        return role_reqs;
+    }
+
+    public Date getStartDate() {
         return start_date;
     }
 
-    public Date getPost_date() {
+    public Date getPostDate() {
         return post_date;
     }
 
@@ -151,43 +155,39 @@ public class Offer implements Serializable {
         this.title = title;
     }
 
-    public void setHq_location(String hq_location) {
+    public void setHqLocation(String hq_location) {
         this.hq_location = hq_location;
     }
     
-    public void setExp_years(String exp_years) {
+    public void setExpYears(String exp_years) {
         this.exp_years = exp_years;
     }
 
-    public void setJob_desc(String job_desc) {
+    public void setJobDesc(String job_desc) {
         this.job_desc = job_desc;
     }
 
-    public void setJob_location(String job_location) {
+    public void setJobLocation(String job_location) {
         this.job_location = job_location;
     }
 
-    public void setCompany_desc(String company_desc) {
+    public void setCompanyDesc(String company_desc) {
         this.company_desc = company_desc;
     }
 
-    public void setRole_respos(String role_respos) {
+    public void setRoleRespos(String role_respos) {
         this.role_respos = role_respos;
     }
 
-    public String getRole_reqs() {
-        return role_reqs;
-    }
-
-    public void setRole_reqs(String role_reqs) {
+    public void setRoleReqs(String role_reqs) {
         this.role_reqs = role_reqs;
     }
 
-    public void setStart_date(Date start_date) {
+    public void setStartDate(Date start_date) {
         this.start_date = start_date;
     }
 
-    public void setPost_date(Date post_date) {
+    public void setPostDate(Date post_date) {
         this.post_date = post_date;
     }
 

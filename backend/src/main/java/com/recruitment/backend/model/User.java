@@ -1,4 +1,4 @@
-package com.recruitment.backend.modal;
+package com.recruitment.backend.model;
 
 import java.io.Serializable;
 
@@ -42,7 +42,7 @@ public class User implements Serializable {
 	}
 	
 	//getters
-	public int getUserId() {
+	public int getId() {
 		return id;
 	}
 	public String getPwd() {
@@ -54,7 +54,7 @@ public class User implements Serializable {
 	}
 	
 	//setters
-	public void setUserId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public void setEmail(String email) {

@@ -1,4 +1,4 @@
-package com.recruitment.backend.modal;
+package com.recruitment.backend.model;
 
 
 import java.io.Serializable;

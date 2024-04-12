@@ -1,4 +1,4 @@
-package com.recruitment.backend.modal;
+package com.recruitment.backend.model;
 
 import java.io.Serializable;
 
@@ -40,28 +40,28 @@ public class CvFile implements Serializable {
     }
     
   //getters
-    public Long getFileId() {
+    public Long getId() {
 		return id;
 	}
     
-    public String getFileName() {
+    public String getName() {
 		return fileName;
 	}
     
-    public String getFilePath() {
+    public String getPath() {
 		return filePath;
 	}
     
   //setters
-    public void setFileId(Long id) {
+    public void setId(Long id) {
 		this.id = id;
 	}
     
-    public void setFileName(String fileName) {
+    public void setName(String fileName) {
 		this.fileName = fileName;
 	}
     
-    public void setFilePath(String filePath) {
+    public void setPath(String filePath) {
 		this.filePath = filePath;
 	}
     
