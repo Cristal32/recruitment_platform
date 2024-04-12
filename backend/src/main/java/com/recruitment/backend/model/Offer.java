@@ -142,7 +142,6 @@ public class Offer implements Serializable {
     }
     
     // Setters
-
     public void setId(int id) {
         this.id = id;
     }

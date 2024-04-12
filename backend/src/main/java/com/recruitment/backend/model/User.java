@@ -32,43 +32,71 @@ public class User implements Serializable {
 	@Column(name = "password")
 	private String pwd;
 	
+	@Column(name = "name")
+	private String name;
 	
-	//constructors
+	@Column(name = "last_name")
+	private String last_name;
+	
+	// Constructors
 	public User() {}
 	
-	public User(String email, String pwd) {
+	public User(String email, String pwd, String name, String last_name) {
 		this.email = email;
 		this.pwd = pwd;
+		this.name = name;
+		this.last_name = last_name;
 	}
 	
-	//getters
+	// Getters
 	public int getId() {
 		return id;
 	}
-	public String getPwd() {
-		return pwd;
-	}
-
+	
 	public String getEmail() {
 		return email;
 	}
 	
-	//setters
+	public String getPwd() {
+		return pwd;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getLastName() {
+		return last_name;
+	}
+	
+	// Setters
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
 	
-	//methods
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setLastName(String last_name) {
+		this.last_name = last_name;
+	}
+	
+	// Overriden methods
 	@Override
 	public String toString() {
 		return "User{" + 
 				"id = " + id +
+				", name = " + name +
+				", last name = " + last_name +
 				", email = " + email +
 				", pwd = " + pwd +
 				"}";
