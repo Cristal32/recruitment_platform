@@ -14,6 +14,14 @@ export class SidebarComponent implements OnInit {
   // constructor(private router: Router, private utilisateurService: UtilisateurService,private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.currentUtilisateur = {
+      "id": 1,
+      "email": "mery@gmail.com",
+      "pwd": "mery32",
+      "name": "Meryem",
+      "lastName": "El Karati"
+    };
+
       // this.currentUser = JSON.parse(localStorage.getItem('currentUser')|| '{}');
       // this.getCurrentUser();
   }

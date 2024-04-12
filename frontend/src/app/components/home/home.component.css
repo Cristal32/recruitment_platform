@@ -1,16 +1,16 @@
 .home-container{
-    background-color: rgb(233, 233, 233);
     height: 753px;
+    background-color: rgb(238, 238, 238);
 }
 .home-body-container{
     position: absolute;
     top: 81px;
-    background: rgb(233, 233, 233);
     width:80%;
     height: 650px;
     margin-left: 20px;
     padding: 10px;
-    border: 1px solid rgb(184, 184, 184);
+    background-color: rgb(247, 247, 247);
+    border-radius: 10px;
 }
 .sidebar{
     margin-top: -20px;

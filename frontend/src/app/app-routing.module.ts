@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './components/auth/auth.component';
 import { HomeComponent } from './components/home/home.component';
+import { JobsComponent } from './components/jobs/jobs.component';
+import { MyApplicationsComponent } from './components/my-applications/my-applications.component';
+import { MyOffersComponent } from './components/my-offers/my-offers.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
@@ -9,16 +12,12 @@ const routes: Routes = [
   {
     path:'home', 
     component: HomeComponent,
-    // children:[
-    //   //{path: '', redirectTo: 'stagiaires', pathMatch: 'full'},
-    //   {path:'stagiaires', component: StagiairesComponent},
-    //   {path:'utilisateur', component: UtilisateurComponent},
-    //   {path:'roles',component: RolesComponent},
-    //   {path:'access',component: AccessComponent},
-    //   {path:'stages',component: StagesComponent},
-    //   {path:'affectations',component: AffectationsComponent},
-    //   {path:'messages',component: MessagesComponent}
-    // ]
+    children:[
+      {path: '', redirectTo: 'jobs', pathMatch: 'full'},
+      {path:'jobs', component: JobsComponent},
+      {path:'myApplications', component: MyApplicationsComponent},
+      {path:'myOffers', component: MyOffersComponent}
+    ]
   }
 ];
 
