@@ -17,4 +17,4 @@ This is a simple project for a web platform that allows recruiters to submit job
 ## Class Diagram
 Before starting on the code, we first need to establish our database design.
 
-<img src="https://github.com/Cristal32/recruitment_platform/assets/114748477/29ed7616-5673-4de2-b982-4ea41796f031" alt="recruitment_class_diag" width="800" height="400">
+<img src="assets/class_diag.png" alt="recruitment_class_diag" width="800" height="400">
