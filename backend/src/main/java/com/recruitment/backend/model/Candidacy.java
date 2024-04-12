@@ -43,7 +43,7 @@ public class Candidacy implements Serializable{
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cv_id")
-	private CvFile cv;
+	private FileData cv;
 	
 	@Enumerated(EnumType.STRING)
     @Column(name = "status")
@@ -54,7 +54,7 @@ public class Candidacy implements Serializable{
 		this.status = CandidateStatus.PENDING;
 	}
 	
-	public Candidacy(User user, Offer offer, String desc, CvFile cv) {
+	public Candidacy(User user, Offer offer, String desc, FileData cv) {
 		this.user = user;
 		this.offer = offer;
 		this.desc = desc;
@@ -78,6 +78,10 @@ public class Candidacy implements Serializable{
 		return desc;
 	}
 	
+	public FileData getCv() {
+		return cv;
+	}
+	
 	// Setters
 	public void setId(CandidacyId id) {
 		this.id = id;
@@ -93,6 +97,10 @@ public class Candidacy implements Serializable{
 	
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+	
+	public void setCv(FileData cv) {
+		this.cv = cv;
 	}
 	
 	// Embedded id

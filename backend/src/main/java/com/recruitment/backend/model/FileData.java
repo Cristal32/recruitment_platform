@@ -13,8 +13,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-@Table(name = "Cv_file")
-public class CvFile implements Serializable {
+@Table(name = "file_data")
+public class FileData implements Serializable {
 
 	/**
 	 * 
@@ -32,9 +32,9 @@ public class CvFile implements Serializable {
     private String filePath;
     
   //constructeurs
-    public CvFile() {}
+    public FileData() {}
     
-    public CvFile(String fileName, String filePath) {
+    public FileData(String fileName, String filePath) {
     	this.fileName = fileName;
     	this.filePath = filePath;
     }
@@ -80,8 +80,8 @@ public class CvFile implements Serializable {
             return this;
         }
 
-        public CvFile build() {
-        	CvFile cvFile = new CvFile();
+        public FileData build() {
+        	FileData cvFile = new FileData();
         	cvFile.fileName = this.fileName;
         	cvFile.filePath = this.filePath;
             return cvFile;
