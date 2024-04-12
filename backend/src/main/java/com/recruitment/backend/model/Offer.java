@@ -29,6 +29,9 @@ public class Offer implements Serializable {
     @Column(name = "offer_id", unique = true, nullable = false)
     private int id;
     
+    @Column(name = "employer")
+    private String employer;
+    
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "posterId")
 	private User poster;
@@ -72,9 +75,11 @@ public class Offer implements Serializable {
     	this.status = OfferStatus.OPEN;
     }
 
-    public Offer(User poster, String title, String hq_location, String exp_years, String job_desc, String job_location,
-            String company_desc, String role_respos, String role_reqs, Date start_date, Date post_date) {
-        this.poster = poster;
+    public Offer(String employer, User poster, String title, String hq_location, String exp_years, 
+    		String job_desc, String job_location, String company_desc, String role_respos, 
+    		String role_reqs, Date start_date, Date post_date) {
+        this.employer = employer;
+    	this.poster = poster;
     	this.title = title;
         this.hq_location = hq_location;
         this.exp_years = exp_years;
@@ -91,6 +96,10 @@ public class Offer implements Serializable {
     // Getters
     public int getId() {
         return id;
+    }
+    
+    public String getEmployer() {
+        return employer;
     }
     
     public User getPoster() {
@@ -144,6 +153,10 @@ public class Offer implements Serializable {
     // Setters
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public void setEmployer(String employer) {
+        this.employer = employer;
     }
     
     public void setPoster(User poster) {

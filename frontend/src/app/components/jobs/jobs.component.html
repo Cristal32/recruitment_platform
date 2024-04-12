@@ -1,5 +1,6 @@
 <div class="job-list">
     <div *ngFor="let job of jobs" class="job-card">
+        <p>{{ job.poster.name }} {{ job.poster.lastName }} :</p>
         <h5>{{ job.title }}</h5>
         <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16" style="color:#8024db">

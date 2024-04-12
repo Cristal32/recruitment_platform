@@ -2,6 +2,7 @@ import { User } from "./user";
 
 export class Offer{
     id: number = 0;
+    employer: string = '';
     poster: User = new User();
     title: string = '';
     hqLocation: string = '';

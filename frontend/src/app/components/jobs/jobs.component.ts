@@ -10,6 +10,7 @@ export class JobsComponent {
   jobs: Offer[] = [
     {
       "id": 1,
+      "employer": "PAYME",
       "poster":
       {
         "id": 1,
@@ -30,7 +31,8 @@ export class JobsComponent {
       "status": "OPEN"
     },
     {
-      "id": 1,
+      "id": 2,
+      "employer": "DXC Technology",
       "poster":
       {
         "id": 1,
