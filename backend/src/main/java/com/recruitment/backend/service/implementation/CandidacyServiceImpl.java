@@ -48,6 +48,6 @@ public class CandidacyServiceImpl implements CandidacyService {
     @Override
     public void deleteCandidacy(int offerId, int userId) {
     	Candidacy.CandidacyId id = new Candidacy.CandidacyId(offerId, userId);
-        candidacyDao.findCandidacyById(id);
+        candidacyDao.deleteById(id);
     }
 }

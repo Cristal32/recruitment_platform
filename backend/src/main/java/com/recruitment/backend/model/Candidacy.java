@@ -58,6 +58,7 @@ public class Candidacy implements Serializable{
 		this.user = user;
 		this.offer = offer;
 		this.desc = desc;
+		this.cv = cv;
 		this.status = CandidateStatus.PENDING;
 	}
 	
