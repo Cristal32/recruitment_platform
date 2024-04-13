@@ -18,3 +18,14 @@ This is a simple project for a web platform that allows recruiters to submit job
 Before starting on the code, we first need to establish our database design.
 
 <img src="assets/class_diag.png" alt="recruitment_class_diag" width="800" height="400">
+
+## Testing the code
+To test out the code yourself:
+1. Clone the project
+``` git clone https://github.com/Cristal32/recruitment_platform.git ```
+
+2. The server will be listening on the port 8080: you can test it out on the URL http://localhost:8080 (GET methods with a browser, for more elaborate testing, you can use Postman)
+3. To execute the backend, simply build and run the app in your Java IDE such as Eclipse or IntelliJ
+4. To execute the frontend, run this command in a terminal:
+``` ng serve ```
+Then access the URL: http://localhost:4200
