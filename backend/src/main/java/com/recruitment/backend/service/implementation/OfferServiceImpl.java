@@ -27,6 +27,12 @@ public class OfferServiceImpl implements OfferService{
 		return offerDao.findOfferById(id).orElse(null);
 	}
 	
+	// ---------------------------- get offer by poster ----------------------------
+	@Override
+	public List<Offer> findOffersByPosterId(int posterId) {
+	    return offerDao.findOffersByPosterId(posterId);
+	}
+	
 	// ---------------------------- add offer ----------------------------
 	
 	@Override

@@ -48,6 +48,13 @@ public class OfferController {
 		return new ResponseEntity<>(offer, HttpStatus.OK);
 	}
 	
+	@GetMapping("/getPoster/{posterId}")
+	// @PreAuthorize("hasAuthority('GET_USERS')")
+	public ResponseEntity<List<Offer>> getOfferByPosterId(@PathVariable("posterId") int poster_id){
+		List<Offer> offers = offerService.findOffersByPosterId(poster_id);
+		return new ResponseEntity<>(offers, HttpStatus.OK);
+	}
+	
 	// ================================= POST Mapping =================================
 	
 	@PostMapping("/add")

@@ -1,3 +1,9 @@
+.create-offer-btn{
+    border: none;
+    background-color: white;
+    font-size: 15px;
+}
+
 .job-card{
     background-color: white;
     border-radius: 10px;

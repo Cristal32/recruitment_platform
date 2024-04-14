@@ -7,6 +7,7 @@ import com.recruitment.backend.model.Offer;
 public interface OfferService {
 	public List<Offer> getAllOffers();
 	public Offer findOfferById(int id);
+	public List<Offer> findOffersByPosterId(int posterId);
 	public Offer addOffer(Offer offer);
 	public Offer updateOffer(Offer offer);
 	public void deleteOffer(int id);

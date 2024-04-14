@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Candidacy } from 'src/app/models/candidacy';
 import { Offer } from 'src/app/models/offer';
+import { OfferService } from 'src/app/services/offer.service';
 
 @Component({
   selector: 'app-my-offers',
@@ -8,6 +10,8 @@ import { Offer } from 'src/app/models/offer';
   styleUrls: ['./my-offers.component.css']
 })
 export class MyOffersComponent implements OnInit{
+  listMyOffers: Offer[] = [];
+  filteredListMyOffers: Offer[] = [];
   showCandidatesMap: { [key: number]: boolean } = {};
   candidates: Candidacy[] = [];
   selectedOffer: Offer = new Offer();
@@ -60,6 +64,10 @@ export class MyOffersComponent implements OnInit{
 
   my_offers = this.offers.filter(offer => offer.poster.email === "mery@gmail.com");
 
+  // Constructor
+  constructor(
+    private offerService: OfferService){}
+
   ngOnInit(){
     // Initialize all offers having their corresponding showCandidate false, so the candidates table doesn't appear
     this.my_offers.forEach(offer => {
@@ -78,5 +86,18 @@ export class MyOffersComponent implements OnInit{
   
   assignSelectedOffer(offer: Offer){
     this.selectedOffer = offer;
+  }
+
+  getAllMyOffers(userId: number){
+    return this.offerService.getOffersByPoster(userId).subscribe(
+      data => {
+        //console.log(data);
+        for(const offer of data){ this.listMyOffers.push(offer); }
+        this.filteredListMyOffers = [...this.listMyOffers];
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error)
+      }
+    );
   }
 }

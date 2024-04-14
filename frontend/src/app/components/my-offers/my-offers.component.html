@@ -1,5 +1,8 @@
 <div class="job-list">
-    <div *ngFor="let job of my_offers" class="job-card">
+  <button type="button" class="btn create-offer-btn" name="create-offer-btn" data-bs-toggle="modal" data-bs-target="#createOfferModal" title="Post a new offer">
+    +
+  </button>
+    <div *ngFor="let job of filteredListMyOffers" class="job-card">
         <p>{{ job.poster.name }} {{ job.poster.lastName }} :</p>
         <h5>{{ job.title }}</h5>
         <span>

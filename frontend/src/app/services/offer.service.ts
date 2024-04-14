@@ -16,7 +16,7 @@ export class OfferService {
   }
 
   public getOffersByPoster(posterId: number): Observable<Offer[]>{
-    return this.http.get<Offer[]>(`${this.apiServerUrl}/offer/getByPoster/${posterId}`);
+    return this.http.get<Offer[]>(`${this.apiServerUrl}/offer/getPoster/${posterId}`);
   }
 
   public addOffer(offer: Offer): Observable<Offer>{
