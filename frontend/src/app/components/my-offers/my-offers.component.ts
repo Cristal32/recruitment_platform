@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Candidacy } from 'src/app/models/candidacy';
 import { Offer } from 'src/app/models/offer';
+import { User } from 'src/app/models/user';
 import { OfferService } from 'src/app/services/offer.service';
 
 @Component({
@@ -10,83 +11,78 @@ import { OfferService } from 'src/app/services/offer.service';
   styleUrls: ['./my-offers.component.css']
 })
 export class MyOffersComponent implements OnInit{
+
+  //managed offer variables
+  createdOffer: Offer = new Offer();
+  selectedOffer: Offer = new Offer();
+
+  currentUser: User = {
+    "id": 2,
+    "email": "safae@dxc.com",
+    "pwd": "safae23",
+    "name": "Safae",
+    "lastName": "Ibrahimi"
+  };
   listMyOffers: Offer[] = [];
   filteredListMyOffers: Offer[] = [];
-  showCandidatesMap: { [key: number]: boolean } = {};
   candidates: Candidacy[] = [];
-  selectedOffer: Offer = new Offer();
-  offers: Offer[] = [
-    {
-      "id": 1,
-      "employer": "PAYME",
-      "poster":
-      {
-        "id": 1,
-        "email": "mery@gmail.com",
-        "pwd": "",
-        "name": "meryem",
-        "lastName": "EL KARATI"
-      },
-      "title": "Software Engineer",
-      "companyDesc": "company desc",
-      "expYears": "2-3 years",
-      "hqLocation": "Rabat",
-      "jobLocation": "Rabat",
-      "jobDesc": "job desc",
-      "postDate": new Date(2023, 6, 3),
-      "roleRespos": "SUpervisor",
-      "startDate": new Date(2023, 6, 4),
-      "status": "OPEN"
-    },
-    {
-      "id": 2,
-      "employer": "DXC Technology",
-      "poster":
-      {
-        "id": 1,
-        "email": "karati@gmail.com",
-        "pwd": "",
-        "name": "meryem",
-        "lastName": "EL KARATI"
-      },
-      "title": "Software Engineer",
-      "companyDesc": "company desc",
-      "expYears": "2-3 years",
-      "hqLocation": "Rabat",
-      "jobLocation": "Rabat",
-      "jobDesc": "job desc",
-      "postDate": new Date(2023, 6, 3),
-      "roleRespos": "SUpervisor",
-      "startDate": new Date(2023, 6, 4),
-      "status": "OPEN"
-    }
-  ];
-
-  my_offers = this.offers.filter(offer => offer.poster.email === "mery@gmail.com");
+ 
+  //create stagiaire form
+  form: any = {
+    employer: '',
+    poster: null,
+    jobTitle: '',
+    companyHq: '',
+    wage: '',
+    expYears: '',
+    jobDesc: '',
+    jobLocation: '',
+    companyDesc: '',
+    roleRespos: '',
+    roleReqs: '',
+    startDate: null,
+    postDate: null
+  };
 
   // Constructor
-  constructor(
-    private offerService: OfferService){}
+  constructor(private offerService: OfferService){}
 
   ngOnInit(){
-    // Initialize all offers having their corresponding showCandidate false, so the candidates table doesn't appear
-    this.my_offers.forEach(offer => {
-      this.showCandidatesMap[offer.id] = false;
-    });
+    this.getAllMyOffers(this.currentUser.id);
   }
 
-  toggleCandidates(job: Offer){
-    // For a specific offer, make its candidates table visible or invisible
-    this.showCandidatesMap[job.id] = !this.showCandidatesMap[job.id];
+  //puts the value of the create offer form in the createdPffer variable
+  setFormInCreatedOffer() {
+    this.createdOffer.employer = this.form.employer;
+    this.createdOffer.poster = this.form.poster;
+    this.createdOffer.title = this.form.jobTitle;
+    this.createdOffer.hqLocation = this.form.companyHq;
+    this.createdOffer.expYears = this.form.expYears;
+    this.createdOffer.jobDesc = this.form.jobDesc;
+    this.createdOffer.jobLocation = this.form.jobLocation;
+    this.createdOffer.companyDesc = this.form.companyDesc;
+    this.createdOffer.roleRespos = this.form.roleRespos;
+    this.createdOffer.startDate = this.form.startDate;
+    this.createdOffer.postDate = this.form.postDate;
   }
 
-  areCandidatesShown(offerId: number): boolean {
-    return this.showCandidatesMap[offerId];
+  // ============================================== tabs management ==============================================
+  tabBackgroundColor: string = '#f1f1f1';
+  createOfferModal_ActiveTab: string = 'jobInfoTab';
+
+  setActiveCreateTab(tab: string){
+    this.createOfferModal_ActiveTab = tab;
   }
   
+  // ============================================== Assign variables ==============================================
   assignSelectedOffer(offer: Offer){
     this.selectedOffer = offer;
   }
+
+  assignCreatedOffer(offer: Offer){
+    this.createdOffer = offer;
+  }
+  // -----------------------------------------------------------------------
 
   getAllMyOffers(userId: number){
     return this.offerService.getOffersByPoster(userId).subscribe(
@@ -98,6 +94,24 @@ export class MyOffersComponent implements OnInit{
       (error: HttpErrorResponse) => {
         console.log(error)
       }
+    );
+  }
+
+  //============================================== create offer ==============================================
+  createOfferForm(){
+    // Put in the filled in form data
+    this.setFormInCreatedOffer();
+
+    //Set poster
+    this.createdOffer.poster = this.currentUser;
+
+    // console.log(this.createdOffer);
+    this.offerService.addOffer(this.createdOffer).subscribe(
+      data => {
+        // console.log(data);
+        window.location.reload();
+      },
+      error => console.log(error)
     );
   }
 }

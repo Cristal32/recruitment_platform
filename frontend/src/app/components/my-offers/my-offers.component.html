@@ -1,6 +1,6 @@
 <div class="job-list">
   <button type="button" class="btn create-offer-btn" name="create-offer-btn" data-bs-toggle="modal" data-bs-target="#createOfferModal" title="Post a new offer">
-    +
+    + Post New Job Offer
   </button>
     <div *ngFor="let job of filteredListMyOffers" class="job-card">
         <p>{{ job.poster.name }} {{ job.poster.lastName }} :</p>
@@ -34,4 +34,150 @@
         </div>
       </div>
     </div>
+</div>
+
+<!-- ======================== create offer modal ======================== -->
+<div class="modal fade" id="createOfferModal" tabindex="-1" aria-labelledby="createOfferModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="createOfferModalLabel">New job offer</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form name="form" id="create-offer-form" (ngSubmit)="f.form.valid && createOfferForm()" #f="ngForm" novalidate> 
+            <div class="modal-body create-offer-modal-body">
+              <div class="tab-navigation">
+                  <button type="button" class="tablinks" (click)="setActiveCreateTab('jobInfoTab')"  [class.active]="createOfferModal_ActiveTab === 'jobInfoTab'">Job Info</button>
+                  <button type="button" class="tablinks" (click)="setActiveCreateTab('companyInfoTab')" [class.active]="createOfferModal_ActiveTab === 'companyInfoTab'">Company Info</button>
+              </div>
+              <!-- Tab Contents -->
+              <!-- Job info tab -->
+              <div class="tab-content" *ngIf="createOfferModal_ActiveTab === 'jobInfoTab'">
+                  <div class="form-wrapper" style="border: 1px solid rgb(229, 216, 239); padding: 10px; margin-bottom: 10px;">
+                      <div class="input-div">
+                          <div class="input-group mb-3" style="width:150px;">
+                              <div class="form-group">
+                                  <label class="label-elem" for="jobTitleInput">Job Title <span style="color: red">*</span></label>
+                                  <input type="text" class="form-control input-elem" aria-label="jobTitle" aria-describedby="basic-addon1" id="jobTitleInput" name="jobTitle" #title="ngModel" [(ngModel)]="form.jobTitle" required>
+                                  <div *ngIf="title.errors && f.submitted" style="color: red;">
+                                     Job Title obligatoire!
+                                    </div>
+                              </div>
+                          </div>
+                          <div class="input-group mb-3" style="width:150px;">
+                              <div class="form-group">
+                                  <label class="label-elem" for="wageInput">Wage <span style="color: red">*</span></label>
+                                  <input type="text" class="form-control input-elem" aria-label="wage" aria-describedby="basic-addon1" id="wageInput" name="wage" #wage="ngModel" [(ngModel)]="form.wage" required>
+                              </div>
+                              <div *ngIf="wage.errors && f.submitted" style="color: red;">
+                                  Wage obligatoire!
+                                </div>
+                          </div>
+                          <div class="input-group mb-3" style="width:150px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="expInput">Experience in years <span style="color: red">*</span></label>
+                                <input type="text" class="form-control input-elem" aria-label="exp" aria-describedby="basic-addon1" id="expInput" name="exp" #exp="ngModel" [(ngModel)]="form.expYears" required>
+                                <div *ngIf="exp.errors && f.submitted" style="color: red;">
+                                    Experience obligatoire!
+                                  </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="input-div">
+                          <div class="input-group mb-3" style="width:200px;">
+                              <div class="form-group">
+                                  <label class="label-elem" for="jobDescInput">Job description <span style="color: red">*</span></label>
+                                  <input type="text" class="form-control input-elem" aria-label="jobDesc" aria-describedby="basic-addon1" id="jobDescInput" name="jobDesc" #jobdesc="ngModel" [(ngModel)]="form.jobDesc" required>
+                                  <div *ngIf="jobdesc.errors && f.submitted" style="color: red;">
+                                      Job Description obligatoire!
+                                    </div>
+                              </div>
+                          </div>
+                          <div class="input-group mb-3" style="width:200px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="jobLocationInput">Job location <span style="color: red">*</span></label>
+                                <input type="text" class="form-control input-elem" aria-label="jobLocation" aria-describedby="basic-addon1" id="jobLocationInput" name="jobLocation" #joblocation="ngModel" [(ngModel)]="form.jobLocation" required>
+                                <div *ngIf="joblocation.errors && f.submitted" style="color: red;">
+                                    Job Location obligatoire!
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="input-group mb-3" style="width:200px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="roleResposInput">Role responsibilities <span style="color: red">*</span></label>
+                                <input type="text" class="form-control input-elem" aria-label="roleRespos" aria-describedby="basic-addon1" id="roleResposInput" name="roleRespos" #respos="ngModel" [(ngModel)]="form.roleRespos" required>
+                                <div *ngIf="respos.errors && f.submitted" style="color: red;">
+                                   Role Responsibilities obligatoire!
+                                  </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="input-div">
+                          <div class="input-group mb-3" style="width:200px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="roleReqsInput">Role requirements <span style="color: red">*</span></label>
+                                <input type="text" class="form-control input-elem" aria-label="roleReqs" aria-describedby="basic-addon1" id="roleReqsInput" name="roleReqs" #reqs="ngModel" [(ngModel)]="form.roleReqs" required>
+                                <div *ngIf="reqs.errors && f.submitted" style="color: red;">
+                                   Role Requirements obligatoire!
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="input-group mb-3" style="width:200px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="startDateInput">Start date <span style="color: red">*</span></label>
+                                <input type="date" class="form-control input-elem" aria-label="startDate" aria-describedby="basic-addon1" id="startDateInput" name="startDate" #start="ngModel" [(ngModel)]="form.startDate" required>
+                                <div *ngIf="start.errors && f.submitted" style="color: red;">
+                                   Start date obligatoire!
+                                  </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- company info tab -->
+              <div class="tabcontent" *ngIf="createOfferModal_ActiveTab === 'companyInfoTab'">
+                  <div class="form-wrapper">
+                      <div class="input-div">
+                          <div class="input-group mb-3" style="width:150px;">
+                              <div class="form-group">
+                                  <label class="label-elem" for="employerInput">Employer <span style="color: red">*</span></label>
+                                  <input type="text" class="form-control input-elem" aria-label="employer" aria-describedby="basic-addon1" id="employerInput" name="employer" #employer="ngModel" [(ngModel)]="form.employer" required>
+                                  <div *ngIf="employer.errors && f.submitted" style="color: red;">
+                                      Employer obligatoire!
+                                    </div>
+                              </div>
+                          </div>
+                          <div class="input-group mb-3" style="width:200px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="companyDescInput">Company description <span style="color: red">*</span></label>
+                                <textarea rows="4" cols="50" class="form-control input-elem" aria-label="companyDesc" aria-describedby="basic-addon1" id="companyDescInput" name="companyDesc" #companydesc="ngModel" [(ngModel)]="form.companyDesc" required></textarea>
+                                <div *ngIf="companydesc.errors && f.submitted" style="color: red;">
+                                    Company description obligatoire!
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="input-div">
+                        <div class="input-group mb-3" style="width:150px;">
+                          <div class="form-group">
+                              <label class="label-elem" for="companyHQInput">Company HQ <span style="color: red">*</span></label>
+                              <input type="text" class="form-control input-elem" aria-label="employer" aria-describedby="basic-addon1" id="companyHQInput" name="companyHq" #hq="ngModel" [(ngModel)]="form.companyHq" required>
+                              <div *ngIf="hq.errors && f.submitted" style="color: red;">
+                                 Company HQ obligatoire!
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+              <button type="submit" class="btn edit-stagiaire-btn colored-button" name="edit-stagiaire-btn" id="edit-stagiaire-btn">Enregistrer</button>
+          </div>
+          </form>
+      </div>
+    </div>
+  </div>
 </div>

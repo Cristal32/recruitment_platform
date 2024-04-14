@@ -11,7 +11,6 @@ export class Offer{
     jobLocation: string = '';
     companyDesc: string = '';
     roleRespos: string = '';
-    startDate: Date = new Date();
-    postDate: Date = new Date();
-    status: string = '';
+    startDate: Date = new Date() || null;
+    postDate: Date = new Date() || null;
 }
