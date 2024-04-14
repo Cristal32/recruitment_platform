@@ -8,7 +8,7 @@
             </svg>
             {{ job.jobLocation}}
         </span>
-        <p>{{ job.jobDesc }}</p>
+        <p><b>Job Description: </b>{{ job.jobDesc }}</p>
 
         <!--view detail icon-->
         <button type="button" class="btn candidate-detail-btn" name="offer_detail_btn" data-bs-toggle="modal" data-bs-target="#offerDetailModalLabel" (click)="assignSelectedOffer(job)" title="Candidates">

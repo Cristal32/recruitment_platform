@@ -28,15 +28,19 @@ public class FileData implements Serializable {
     @Column(name = "file_name")
     private String fileName;
     
+    @Column(name = "file_type")
+    private String fileType;
+    
     @Column(name = "file_path")
     private String filePath;
     
   //constructeurs
     public FileData() {}
     
-    public FileData(String fileName, String filePath) {
+    public FileData(String fileName, String filePath, String fileType) {
     	this.fileName = fileName;
     	this.filePath = filePath;
+    	this.fileType = fileType;
     }
     
   //getters
@@ -45,6 +49,10 @@ public class FileData implements Serializable {
 	}
     
     public String getName() {
+		return fileName;
+	}
+    
+    public String getType() {
 		return fileName;
 	}
     
@@ -61,6 +69,10 @@ public class FileData implements Serializable {
 		this.fileName = fileName;
 	}
     
+    public void setType(String fileType) {
+		this.fileType = fileType;
+	}
+    
     public void setPath(String filePath) {
 		this.filePath = filePath;
 	}
@@ -68,10 +80,16 @@ public class FileData implements Serializable {
  // Builder inner class
     public static class Builder {
         private String fileName;
+        private String fileType;
         private String filePath;
 
         public Builder fileName(String fileName) {
             this.fileName = fileName;
+            return this;
+        }
+        
+        public Builder fileType(String fileType) {
+            this.fileType = fileType;
             return this;
         }
 
@@ -81,10 +99,11 @@ public class FileData implements Serializable {
         }
 
         public FileData build() {
-        	FileData cvFile = new FileData();
-        	cvFile.fileName = this.fileName;
-        	cvFile.filePath = this.filePath;
-            return cvFile;
+        	FileData file = new FileData();
+        	file.fileName = this.fileName;
+        	file.filePath = this.filePath;
+        	file.fileType = this.fileType;
+            return file;
         }
     }
 
