@@ -83,6 +83,10 @@ public class Candidacy implements Serializable{
 		return cv;
 	}
 	
+	public CandidateStatus getStatus() {
+	    return status;
+	}
+	
 	// Setters
 	public void setId(CandidacyId id) {
 		this.id = id;
@@ -102,6 +106,10 @@ public class Candidacy implements Serializable{
 	
 	public void setCv(FileData cv) {
 		this.cv = cv;
+	}
+	
+	public void setStatus(CandidateStatus status) {
+	    this.status = status;
 	}
 	
 	// Embedded id

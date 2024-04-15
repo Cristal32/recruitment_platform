@@ -11,4 +11,6 @@ public interface CandidacyService {
 	Candidacy addCandidacy(Candidacy candidacy);
 	Candidacy updateCandidacy(Candidacy candidacy);
 	void deleteCandidacy(int offerId, int userId);
+	boolean validateCandidacy(int offerId, int userId);
+	boolean rejectCandidacy(int offerId, int userId);
 }

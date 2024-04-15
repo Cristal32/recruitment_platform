@@ -17,6 +17,7 @@ export class MyOffersComponent implements OnInit{
   createdOffer: Offer = new Offer();
   selectedOffer: Offer = new Offer();
   selectedCandidates: Candidacy[] = []
+  selectedCandidate: Candidacy = new Candidacy();
 
   currentUser: User = {
     "id": 2,
@@ -85,6 +86,10 @@ export class MyOffersComponent implements OnInit{
   assignCreatedOffer(offer: Offer){
     this.createdOffer = offer;
   }
+
+  assignSelectedCandidate(candidate: Candidacy){
+    this.selectedCandidate = candidate;
+  }
   // -----------------------------------------------------------------------
 
   getAllMyOffers(userId: number){
@@ -133,4 +138,19 @@ export class MyOffersComponent implements OnInit{
       error => console.log(error)
     );
   }
+
+  validateCandidateForm(){
+    this.candidacyService.validateCandidacy(this.selectedCandidate.user.id, this.selectedCandidate.offer.id).subscribe(
+      data => {
+        console.log(data);
+        window.location.reload();
+      },
+      error => console.log(error)
+    );
+  }
+
+  rejectCandidateForm(){
+
+  }
 }
+

@@ -55,4 +55,29 @@ public class CandidacyServiceImpl implements CandidacyService {
     	Candidacy.CandidacyId id = new Candidacy.CandidacyId(offerId, userId);
         candidacyDao.deleteById(id);
     }
+    
+    // ---------------------------- validate/reject candidacy ----------------------------
+    @Override
+    public boolean validateCandidacy(int offerId, int userId) {
+        Candidacy candidacy = findCandidacyById(offerId, userId);
+        if (candidacy != null) {
+            candidacy.setStatus(Candidacy.CandidateStatus.ACCEPTED);
+            candidacyDao.save(candidacy);
+            return true; // Operation successful
+        } else {
+            return false; // Candidacy not found
+        }
+    }
+
+    @Override
+    public boolean rejectCandidacy(int offerId, int userId) {
+        Candidacy candidacy = findCandidacyById(offerId, userId);
+        if (candidacy != null) {
+            candidacy.setStatus(Candidacy.CandidateStatus.REJECTED);
+            candidacyDao.save(candidacy);
+            return true; // Operation successful
+        } else {
+            return false; // Candidacy not found
+        }
+    }
 }

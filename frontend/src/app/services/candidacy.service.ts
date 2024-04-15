@@ -23,11 +23,20 @@ export class CandidacyService {
   public addCandidacy(offer: Candidacy): Observable<Candidacy>{
     return this.http.post<Candidacy>(`${this.apiServerUrl}/candidacy/add`, offer);
   }
+
   public updateCandidacy(offer: Candidacy): Observable<Candidacy>{
       return this.http.put<Candidacy>(`${this.apiServerUrl}/candidacy/update`, offer);
   }
 
   public deleteCandidacy(offerId: number): Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/candidacy/delete/${offerId}`);
+  }
+
+  public validateCandidacy(offerId: number, userId: number): Observable<any>{
+    return this.http.put(`${this.apiServerUrl}/candidacy/validate/${offerId}/${userId}`,{});
+  }
+
+  public rejectCandidacy(offerId: number, userId: number): Observable<any> {
+    return this.http.put(`${this.apiServerUrl}/candidacy/validate/${offerId}/${userId}`,{});
   }
 }

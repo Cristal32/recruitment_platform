@@ -67,6 +67,26 @@ public class CandidacyController {
 		return new ResponseEntity<>(updated_candidacy, HttpStatus.OK); 
 	}
 	
+	@PutMapping("/validate/{offerId}/{userId}")
+	public ResponseEntity<String> validateCandidacy(@PathVariable int offerId, @PathVariable int userId) {
+        boolean isValidated = candidacyService.validateCandidacy(offerId, userId);
+        if (isValidated) {
+            return ResponseEntity.ok("Candidacy validated successfully.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+	
+	@PutMapping("/reject/{offerId}/{userId}")
+	public ResponseEntity<String> rejectCandidacy(@PathVariable int offerId, @PathVariable int userId) {
+        boolean isRejected = candidacyService.rejectCandidacy(offerId, userId);
+        if (isRejected) {
+            return ResponseEntity.ok("Candidacy rejected successfully.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+	
 	// ================================= DELETE Mapping =================================
 	@Transactional
 	@DeleteMapping("/delete/{offerId}/{userId}")
