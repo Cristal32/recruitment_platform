@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Candidacy } from 'src/app/models/candidacy';
 import { Offer } from 'src/app/models/offer';
 import { User } from 'src/app/models/user';
+import { CandidacyService } from 'src/app/services/candidacy.service';
 import { OfferService } from 'src/app/services/offer.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class MyOffersComponent implements OnInit{
   //managed offer variables
   createdOffer: Offer = new Offer();
   selectedOffer: Offer = new Offer();
+  selectedCandidates: Candidacy[] = []
 
   currentUser: User = {
     "id": 2,
@@ -27,7 +29,7 @@ export class MyOffersComponent implements OnInit{
   filteredListMyOffers: Offer[] = [];
   candidates: Candidacy[] = [];
  
-  //create stagiaire form
+  // Create offer form
   form: any = {
     employer: '',
     poster: null,
@@ -45,7 +47,7 @@ export class MyOffersComponent implements OnInit{
   };
 
   // Constructor
-  constructor(private offerService: OfferService){}
+  constructor(private offerService: OfferService, private candidacyService: CandidacyService){}
 
   ngOnInit(){
     this.getAllMyOffers(this.currentUser.id);
@@ -77,6 +79,7 @@ export class MyOffersComponent implements OnInit{
   // ============================================== Assign variables ==============================================
   assignSelectedOffer(offer: Offer){
     this.selectedOffer = offer;
+    this.getOfferCandidates(offer.id);
   }
 
   assignCreatedOffer(offer: Offer){
@@ -95,6 +98,22 @@ export class MyOffersComponent implements OnInit{
         console.log(error)
       }
     );
+  }
+
+  getOfferCandidates(offerId: number){
+    return this.candidacyService.getCandidaciesByOffer(offerId).subscribe(
+      data => {
+        console.log(data);
+        for(const candidate of data){ this.selectedCandidates.push(candidate); }
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error)
+      }
+    );
+  }
+
+  clearCandidates(){
+    this.selectedCandidates = [];
   }
 
   //============================================== create offer ==============================================

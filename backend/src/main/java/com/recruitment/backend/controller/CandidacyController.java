@@ -41,9 +41,15 @@ public class CandidacyController {
 	}
 	
 	@GetMapping("/get/{offerId}/{userId}")
-	public ResponseEntity<Candidacy> getAcquerirById(@PathVariable int offerId, @PathVariable int userId){
+	public ResponseEntity<Candidacy> getCandidacyById(@PathVariable int offerId, @PathVariable int userId){
 		Candidacy candidacy = candidacyService.findCandidacyById(offerId, userId);
 		return new ResponseEntity<>(candidacy, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getByOffer/{offerId}")
+	public ResponseEntity<List<Candidacy>> getCandidacyByOffer(@PathVariable int offerId){
+		List<Candidacy> candidacies = candidacyService.findCandidaciesByOffer(offerId);
+		return new ResponseEntity<>(candidacies, HttpStatus.OK);
 	}
 	// ================================= POST Mapping =================================
 	

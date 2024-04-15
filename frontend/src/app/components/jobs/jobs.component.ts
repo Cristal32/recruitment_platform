@@ -10,6 +10,13 @@ import { OfferService } from 'src/app/services/offer.service';
 export class JobsComponent implements OnInit {
   listOffers: Offer[] = [];
   filteredListOffers: Offer[] = [];
+  selectedOffer: Offer = new Offer();
+
+  // Application form
+  form: any = {
+    cv: '',
+    desc: ''
+  };
 
   // Constructor
   constructor(
@@ -19,11 +26,19 @@ export class JobsComponent implements OnInit {
     this.getAllOffers();
   }
 
+  assignSelectedOffer(offer: Offer){
+    this.selectedOffer = offer;
+  }
+
   getAllOffers(){
     this.offerService.getAllOffers().subscribe(
       ((offers: any) => {
         this.listOffers = offers;
         this.filteredListOffers = [...this.listOffers];
     }));
+  }
+
+  ApplyForm(){
+
   }
 }

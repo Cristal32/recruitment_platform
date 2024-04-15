@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.special-color{
+    color: rgb(54, 131, 255)
+}
+
+.colored-button{
+    background-color: rgb(54, 131, 255);
+    color: white;
+}

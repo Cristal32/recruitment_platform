@@ -11,5 +11,50 @@
         <br/> <br/>
         <p>
             <b>Job Description: </b> <br/> {{ job.jobDesc }}</p>
+            <!--Apply button-->
+            <button type="button" class="btn apply-btn" name="apply_btn" data-bs-toggle="modal" data-bs-target="#ApplyCandidacyModalLabel" (click)="assignSelectedOffer(job)" title="Apply">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-up special-color" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5m-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5"/>
+                </svg> <span class="special-color">Apply to this offer</span>
+            </button>
       </div>
   </div>
+
+  <!-- ================================================ apply candidacy modal ================================================ -->
+<div class="modal fade" id="ApplyCandidacyModalLabel" tabindex="-1" aria-labelledby="ApplyCandidacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="ApplyCandidacyModalLabel">Apply for the job: <strong>{{selectedOffer.title}}</strong></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form name="form" id="create-offer-form" (ngSubmit)="f.form.valid && ApplyForm()" #f="ngForm" novalidate> 
+                <div class="input-div">
+                    <div class="input-group mb-3" style="width:150px;">
+                        <div class="form-group">
+                            <label class="label-elem" for="cvInput">CV <span style="color: red">*</span></label>
+                            <input type="text" class="form-control input-elem" aria-label="jobTitle" aria-describedby="basic-addon1" id="cvInput" name="cvInput" #cv="ngModel" [(ngModel)]="form.cvInput" required>
+                            <div *ngIf="cv.errors && f.submitted" style="color: red;">
+                               Cv is obligatory!
+                              </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3" style="width:150px;">
+                        <div class="form-group">
+                            <label class="label-elem" for="descInput">Description <span style="color: red">*</span></label>
+                            <input type="text" class="form-control input-elem" aria-label="desc" aria-describedby="basic-addon1" id="descInput" name="desc" #desc="ngModel" [(ngModel)]="form.desc" required>
+                        </div>
+                        <div *ngIf="desc.errors && f.submitted" style="color: red;">
+                            Description is obligatory!
+                          </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn apply-btn colored-button" name="apply-btn" id="apply-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

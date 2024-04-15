@@ -28,6 +28,11 @@ public class CandidacyServiceImpl implements CandidacyService {
     	Candidacy.CandidacyId id = new Candidacy.CandidacyId(offerId, userId);
         return candidacyDao.findCandidacyById(id).orElse(null);
     }
+    
+    @Override
+    public List<Candidacy> findCandidaciesByOffer(int offerId) {
+        return candidacyDao.findCandidacyByOfferId(offerId);
+    }
 
  // ---------------------------- add candidacy ----------------------------
     
