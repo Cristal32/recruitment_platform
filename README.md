@@ -109,7 +109,7 @@ The frontend layout is composed of different blocs, following the MVC design pat
 
 App layout:
 
-<img src="assets/app_layout.png" alt="app layout" width="800" height="300">
+<img src="assets/app_layout.PNG" alt="app layout" width="800" height="300">
 
 ## Trying out the code
 To test out the code yourself, clone the project:
