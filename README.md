@@ -31,6 +31,8 @@ This is a simple project for a web platform that allows recruiters to submit job
     - [2. MVC design pattern](#2-mvc-design-pattern)
 - [1. Database connexion & configuration](#1-database-connexion--configuration)
 - [2. Frontend application](#2-setup-frontend-application)
+    - [1. Setup the frontend application](#1-setup-the-frontend-application)
+    - [2. App layout](#2-app-layout)
 
 ## 0. Backend application
 
@@ -69,6 +71,8 @@ Create a new Database from pgAdmin.
 
 ### Configure connexion to the database
 
+In a file `application.properties`:
+
 ```
 spring.datasource.url=jdbc:postgresql://localhost:5432/DATABASE_NAME
 spring.datasource.username=USERNAME
@@ -78,6 +82,8 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 ```
 
 ## 2. Frontend application
+
+### 1. Setup the frontend application
 
 1. Create an Angular project:
 
@@ -93,8 +99,19 @@ ng serve
 
 3. The application will be running on port 4200. To view its interface, simply access the URL: http://localhost:4200
 
-## Testing the code
-To test out the code yourself:
-1. Clone the project
+### 2. App layout
+
+The frontend layout is composed of different blocs, following the MVC design pattern as well.
+
+* The code for each interface is contained within a **component**, along with its html, css and ts files.
+* Since we're using typescript which is a staticly typed language, we can define in a **model** layer, the different entities already establshed in our backend.  
+* We can implement the business logic in a **service** layer, with service classes, where we can call the server with HTTP requests.
+
+App layout:
+
+<img src="assets/app_layout.png" alt="app layout" width="800" height="300">
+
+## Trying out the code
+To test out the code yourself, clone the project:
 ``` 
 git clone https://github.com/Cristal32/recruitment_platform.git 
