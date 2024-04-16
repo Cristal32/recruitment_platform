@@ -33,6 +33,11 @@ public class CandidacyServiceImpl implements CandidacyService {
     public List<Candidacy> findCandidaciesByOffer(int offerId) {
         return candidacyDao.findCandidacyByOfferId(offerId);
     }
+    
+    @Override
+    public List<Candidacy> findCandidaciesByUser(int userId) {
+        return candidacyDao.findCandidacyByUserId(userId);
+    }
 
  // ---------------------------- add candidacy ----------------------------
     

@@ -21,6 +21,10 @@ export class CandidacyService {
     return this.http.get<Candidacy[]>(`${this.apiServerUrl}/candidacy/getByOffer/${offerId}`);
   }
 
+  public getCandidaciesByUser(userId: number): Observable<Candidacy[]>{
+    return this.http.get<Candidacy[]>(`${this.apiServerUrl}/candidacy/getByUser/${userId}`);
+  }
+
   public addCandidacy(candidate: Candidacy): Observable<Candidacy>{
     return this.http.post<Candidacy>(`${this.apiServerUrl}/candidacy/add`, candidate);
   }
@@ -54,6 +58,6 @@ export class CandidacyService {
   }
 
   public rejectCandidacy(offerId: number, userId: number): Observable<any> {
-    return this.http.put(`${this.apiServerUrl}/candidacy/validate/${offerId}/${userId}`,{});
+    return this.http.put(`${this.apiServerUrl}/candidacy/reject/${offerId}/${userId}`,{});
   }
 }

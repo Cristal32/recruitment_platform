@@ -11,15 +11,28 @@
           </svg>
             {{ job.jobLocation}}
         </span>
-        <p><b>Job Description: <br/></b>{{ job.jobDesc }}</p>
-
-        <!--view detail icon-->
-        <button type="button" class="btn candidate-detail-btn" name="candidates_btn" data-bs-toggle="modal" data-bs-target="#candidatesModalLabel" (click)="assignSelectedOffer(job)" title="Candidates">
+        <div>Status: 
+          <span *ngIf="job.status === 0"><b>Open</b></span>
+          <span *ngIf="job.status === 1"><b>Closed</b></span>
+      </div><br><br>
+        <p><b>Job Description:</b> <br/>{{ job.jobDesc }}</p>
+        <span>
+          <!--view candidates icon-->
+          <button type="button" class="btn candidate-detail-btn" name="candidates_btn" data-bs-toggle="modal" data-bs-target="#candidatesModalLabel" (click)="assignSelectedOffer(job)" title="Candidates">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
                 <path d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1h5z"/>
                 <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1H2zM1 4v10a1 1 0 0 0 1 1h2V4H1zm4 0v11h9a1 1 0 0 0 1-1V4H5z"/>
             </svg> View Candidates
         </button>
+        <!--close offer icon-->
+        <button *ngIf="job.status === 0" type="button" class="btn close-offer-btn" name="close_offer_btn" data-bs-toggle="modal" data-bs-target="#fermeOfferModalLabel" (click)="assignSelectedOffer(job)" title="Close offer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+          </svg> Close job offer
+      </button>
+        </span>
+        
 </div>
 
 <!-- ================================================ candidates modal ================================================ -->
@@ -234,14 +247,15 @@
           <div>Are you sure you want to validate this candidate? <br> Email: {{selectedCandidate.user.email}}<br><br></div>
           <form (ngSubmit) = "validateCandidateForm();"> 
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                  <button type="submit" class="btn btn-success valider-user-btn" name="valider-user-btn" id="valider-user-btn" data-bs-dismiss="modal">Valider</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-success valider-user-btn" name="validate-candidate-btn" id="valider-user-btn" data-bs-dismiss="modal">Accept</button>
                 </div>
           </form>
       </div>
     </div>
   </div>
 </div>
+
 <!-- ======================== reject candidate modal ======================== -->
 <div class="modal fade" id="rejectCandidateModal" tabindex="-1" aria-labelledby="rejectCandidateModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -254,11 +268,33 @@
           <div>Are you sure you want to reject this candidate?<br>Email: {{selectedCandidate.user.email}}<br></div>
           <form (ngSubmit) = "rejectCandidateForm()">          
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                  <button type="submit" class="btn btn-danger reject-candidate-btn" name="reject-candidate-btn" id="reject-user-btn" data-bs-dismiss="modal">Rejeter</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" (click)="resetSelectedCandidates()" class="btn btn-danger reject-candidate-btn" name="reject-candidate-btn" id="reject-user-btn" data-bs-dismiss="modal">Reject</button>
                 </div>
           </form>
       </div>
     </div>
   </div>
 </div>
+
+<!-- ======================== close offer modal ======================== -->
+<div class="modal fade" id="fermeOfferModalLabel" tabindex="-1" aria-labelledby="fermeOfferModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="fermeOfferModalLabel">Close offer {{selectedOffer.title}} </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div>Are you sure you want to close this job offer?<br><br></div>
+          <form (ngSubmit) = "closeOfferForm();"> 
+              <div class="modal-footer">
+                
+                  <button type="submit" class="btn btn-success close-offer-btn" name="close-offer-btn" id="close-offer-btn" data-bs-dismiss="modal">Close this offer</button>
+                </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -177,5 +177,20 @@ export class MyOffersComponent implements OnInit{
       );
      }
 }
+
+resetSelectedCandidates(){
+  this.selectedCandidates = [];
+}
+
+closeOfferForm(){
+  this.selectedOffer.status = 1;
+  this.offerService.updateOffer(this.selectedOffer).subscribe(
+    data => {
+      // console.log(data);
+      window.location.reload();
+    },
+    error => console.log(error)
+  );
+}
 }
 

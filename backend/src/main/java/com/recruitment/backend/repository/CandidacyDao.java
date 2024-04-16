@@ -12,4 +12,5 @@ import com.recruitment.backend.model.Candidacy;
 public interface CandidacyDao extends JpaRepository<Candidacy, Candidacy.CandidacyId> {
 	Optional<Candidacy> findCandidacyById(Candidacy.CandidacyId id);
 	List<Candidacy> findCandidacyByOfferId(int offerId);
+	List<Candidacy> findCandidacyByUserId(int userId);
 }

@@ -61,6 +61,12 @@ public class CandidacyController {
 		List<Candidacy> candidacies = candidacyService.findCandidaciesByOffer(offerId);
 		return new ResponseEntity<>(candidacies, HttpStatus.OK);
 	}
+	
+	@GetMapping("/getByUser/{userId}")
+	public ResponseEntity<List<Candidacy>> getCandidacyByUser(@PathVariable int userId){
+		List<Candidacy> candidacies = candidacyService.findCandidaciesByUser(userId);
+		return new ResponseEntity<>(candidacies, HttpStatus.OK);
+	}
 	// ================================= POST Mapping =================================
 	
 	@PostMapping("/add")
