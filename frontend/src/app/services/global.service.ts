@@ -16,12 +16,19 @@ export class GlobalService {
   //   lastName: 'El Karati'
   // };
   {
-    "id": 3,
-    "email": "elasri@um5.ac.ma",
-    "pwd": "elasri32",
-    "name": "Bouchra",
-    "lastName": "El Asri"
+    "id": 2,
+    "email": "safae@dxc.com",
+    "pwd": "safae23",
+    "name": "Safae",
+    "lastName": "Ibrahimi"
 };
+//   {
+//     "id": 3,
+//     "email": "elasri@um5.ac.ma",
+//     "pwd": "elasri32",
+//     "name": "Bouchra",
+//     "lastName": "El Asri"
+// };
 // {
 //   "id": 4,
 //   "email": "hamlaoui@gmail.com",

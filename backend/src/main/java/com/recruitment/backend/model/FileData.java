@@ -53,7 +53,7 @@ public class FileData implements Serializable {
 	}
     
     public String getType() {
-		return fileName;
+		return fileType;
 	}
     
     public String getPath() {

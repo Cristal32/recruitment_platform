@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Candidacy } from 'src/app/models/candidacy';
+import { FileData } from 'src/app/models/fileData';
 import { Offer } from 'src/app/models/offer';
 import { User } from 'src/app/models/user';
 import { CandidacyService } from 'src/app/services/candidacy.service';
+import { FileService } from 'src/app/services/file.service';
 import { GlobalService } from 'src/app/services/global.service';
 import { OfferService } from 'src/app/services/offer.service';
 
@@ -43,7 +45,8 @@ export class MyOffersComponent implements OnInit{
   };
 
   // Constructor
-  constructor(private offerService: OfferService, private candidacyService: CandidacyService, private globalService: GlobalService){}
+  constructor(private offerService: OfferService, private candidacyService: CandidacyService, private globalService: GlobalService,
+    private fileService: FileService){}
 
   ngOnInit(){
     this.getAllMyOffers(this.currentUser.id);
@@ -153,5 +156,26 @@ export class MyOffersComponent implements OnInit{
       error => console.log(error)
     );
   }
+
+  // =========================================== file management ===========================================
+  downloadFile(file : FileData){
+    if(file != null){
+      let filename : string = file.name;
+      console.log(filename);
+      this.fileService.downloadFile(filename).subscribe(
+        data => {
+          console.log(data);
+          const blob = new Blob([data], { type: 'application/octet-stream' });
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = filename;
+          link.click();
+          window.URL.revokeObjectURL(url);
+        },
+        error => console.log(error)
+      );
+     }
+}
 }
 

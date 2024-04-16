@@ -73,49 +73,32 @@ export class JobsComponent implements OnInit {
   @ViewChild('createCvInput') createCvInput!: ElementRef;
   resetSelectedCv(){
     this.selectedCv = new File(this.fileContent, this.fileName);
-    this.createCvInput.nativeElement.value = null;
+    if(this.createCvInput.nativeElement.value){
+      this.createCvInput.nativeElement.value = null;
+    }
+    
   }
 
-  uploadFile() {
-    const formData = new FormData();
-    formData.append('file', this.selectedCv);
-    console.log(this.selectedCv.name); 
-    console.log(this.selectedCv.type); 
-    console.log(this.selectedCv.size);
-    this.fileService.uploadFile(formData).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => console.log(error)
-    );
-  }
-
-  downloadFile(file : FileData){
-      if(file != null){
-        let filename : string = file.name;
-        console.log(filename);
-        this.fileService.downloadFile(filename).subscribe(
-          data => {
-            console.log(data);
-            const blob = new Blob([data], { type: 'application/octet-stream' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
-            link.click();
-            window.URL.revokeObjectURL(url);
-          },
-          error => console.log(error)
-        );
-       }
-  }
+  // uploadFile() {
+  //   const formData = new FormData();
+  //   formData.append('file', this.selectedCv);
+  //   console.log(this.selectedCv.name); 
+  //   console.log(this.selectedCv.type); 
+  //   console.log(this.selectedCv.size);
+  //   this.fileService.uploadFile(formData).subscribe(
+  //     data => {
+  //       console.log(data);
+  //     },
+  //     error => console.log(error)
+  //   );
+  // }
 
   ApplyForm(){
     this.createdCandidacy.offer = this.selectedOffer;
     this.createdCandidacy.user = this.currentUser;
     this.createdCandidacy.id.offerId = this.selectedOffer.id;
     this.createdCandidacy.id.userId = this.currentUser.id;
-    console.log(this.createdCandidacy);
+    console.log(this.selectedCv);
     this.candidacyService.addCandidacyWithCv(this.createdCandidacy, this.selectedCv).subscribe(
       data => {
         console.log(data);
