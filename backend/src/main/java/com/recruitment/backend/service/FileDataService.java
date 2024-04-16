@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +22,8 @@ public class FileDataService {
 	@Autowired
     private FileDataDao fileDataDao;
 
-    private final String FOLDER_PATH = "C:\\Users\\HP\\Documents\\projects\\candidature_PAYME\\backend\\FileSystem\\";
+	@Value("${file.upload.directory}")
+    private String FOLDER_PATH;
     
   //============================= upload a file =============================
 	

@@ -29,10 +29,12 @@ This is a simple project for a web platform that allows recruiters to submit job
 - [0. Backend application](#0-setup-backend-application)
     - [1. Setup the backend application](#1-setup-the-backend-application)
     - [2. MVC design pattern](#2-mvc-design-pattern)
+    - [3. File system](#2-file-system)
 - [1. Database connexion & configuration](#1-database-connexion--configuration)
 - [2. Frontend application](#2-setup-frontend-application)
     - [1. Setup the frontend application](#1-setup-the-frontend-application)
     - [2. App layout](#2-app-layout)
+    - [3. Views](#2-views)
 
 ## 0. Backend application
 
@@ -63,6 +65,15 @@ Class diagram of the MVC design pattern for an entity:
 
 <img src="assets/MVC_pattern.png" alt="mvc pattern" width="500" height="400">
 
+### 3. File system
+
+In order to allow candidates to upload their CV, as well as for recruiters to download them, we established a file system. All uploaded files will be stored in a separate folder. 
+
+To configure the path toward that folder, add this line of code in the configuration file `application.properties`:
+```
+file.upload.directory=/path/to/upload/directory/
+```
+
 ## 1. Database connexion & configuration
 
 ### Setup the database
@@ -71,7 +82,7 @@ Create a new Database from pgAdmin.
 
 ### Configure connexion to the database
 
-In a file `application.properties`:
+In application.properties:
 
 ```
 spring.datasource.url=jdbc:postgresql://localhost:5432/DATABASE_NAME
@@ -110,6 +121,10 @@ The frontend layout is composed of different blocs, following the MVC design pat
 App layout:
 
 <img src="assets/app_layout.PNG" alt="app layout" width="800" height="300">
+
+### 3. Views
+
+You can find the different views of the application in the folder `assets/views`
 
 ## Trying out the code
 To test out the code yourself, clone the project:
