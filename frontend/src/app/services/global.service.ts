@@ -20,5 +20,12 @@ export class GlobalService {
     "name": "Bouchra",
     "lastName": "El Asri"
 };
+// {
+//   "id": 4,
+//   "email": "hamlaoui@gmail.com",
+//   "pwd": "hamlaoui32",
+//   "name": "Mohammed",
+//   "lastName": "Hamlaoui"
+// };
   constructor() { }
 }

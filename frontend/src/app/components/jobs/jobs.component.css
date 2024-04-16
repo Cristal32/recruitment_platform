@@ -4,3 +4,8 @@
     padding: 10px;
     margin-top: 20px;
 }
+
+.job-list {
+    max-height: 100%; /* Set the maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }

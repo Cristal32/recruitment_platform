@@ -6,9 +6,9 @@
         <p>{{ job.poster.name }} {{ job.poster.lastName }} :</p>
         <h5>{{ job.title }}</h5>
         <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16" style="color:#8024db">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-            </svg>
+          <svg *ngIf="job.jobLocation" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill special-color" viewBox="0 0 16 16">
+            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+          </svg>
             {{ job.jobLocation}}
         </span>
         <p><b>Job Description: <br/></b>{{ job.jobDesc }}</p>
@@ -101,20 +101,14 @@
                           </div>
                           <div class="input-group mb-3" style="width:150px;">
                               <div class="form-group">
-                                  <label class="label-elem" for="wageInput">Wage <span style="color: red">*</span></label>
-                                  <input type="text" class="form-control input-elem" aria-label="wage" aria-describedby="basic-addon1" id="wageInput" name="wage" #wage="ngModel" [(ngModel)]="form.wage" required>
+                                  <label class="label-elem" for="wageInput">Wage</label>
+                                  <input type="text" class="form-control input-elem" aria-label="wage" aria-describedby="basic-addon1" id="wageInput" name="wage" #wage="ngModel" [(ngModel)]="form.wage">
                               </div>
-                              <div *ngIf="wage.errors && f.submitted" style="color: red;">
-                                  Wage obligatoire!
-                                </div>
                           </div>
                           <div class="input-group mb-3" style="width:150px;">
                             <div class="form-group">
-                                <label class="label-elem" for="expInput">Experience in years <span style="color: red">*</span></label>
-                                <input type="text" class="form-control input-elem" aria-label="exp" aria-describedby="basic-addon1" id="expInput" name="exp" #exp="ngModel" [(ngModel)]="form.expYears" required>
-                                <div *ngIf="exp.errors && f.submitted" style="color: red;">
-                                    Experience obligatoire!
-                                  </div>
+                                <label class="label-elem" for="expInput">Experience in years</label>
+                                <input type="text" class="form-control input-elem" aria-label="exp" aria-describedby="basic-addon1" id="expInput" name="exp" #exp="ngModel" [(ngModel)]="form.expYears">
                             </div>
                         </div>
                       </div>
@@ -130,11 +124,9 @@
                           </div>
                           <div class="input-group mb-3" style="width:200px;">
                             <div class="form-group">
-                                <label class="label-elem" for="jobLocationInput">Job location <span style="color: red">*</span></label>
-                                <input type="text" class="form-control input-elem" aria-label="jobLocation" aria-describedby="basic-addon1" id="jobLocationInput" name="jobLocation" #joblocation="ngModel" [(ngModel)]="form.jobLocation" required>
-                                <div *ngIf="joblocation.errors && f.submitted" style="color: red;">
-                                    Job Location obligatoire!
-                                  </div>
+                                <label class="label-elem" for="jobLocationInput">Job location</label>
+                                <input type="text" class="form-control input-elem" aria-label="jobLocation" aria-describedby="basic-addon1" id="jobLocationInput" name="jobLocation" #joblocation="ngModel" [(ngModel)]="form.jobLocation">
+                                
                             </div>
                           </div>
                           <div class="input-group mb-3" style="width:200px;">
