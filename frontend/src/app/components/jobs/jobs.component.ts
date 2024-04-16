@@ -79,20 +79,6 @@ export class JobsComponent implements OnInit {
     
   }
 
-  // uploadFile() {
-  //   const formData = new FormData();
-  //   formData.append('file', this.selectedCv);
-  //   console.log(this.selectedCv.name); 
-  //   console.log(this.selectedCv.type); 
-  //   console.log(this.selectedCv.size);
-  //   this.fileService.uploadFile(formData).subscribe(
-  //     data => {
-  //       console.log(data);
-  //     },
-  //     error => console.log(error)
-  //   );
-  // }
-
   ApplyForm(){
     this.createdCandidacy.offer = this.selectedOffer;
     this.createdCandidacy.user = this.currentUser;

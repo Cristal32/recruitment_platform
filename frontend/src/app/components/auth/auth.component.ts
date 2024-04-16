@@ -33,40 +33,5 @@ export class AuthComponent implements OnInit {
 
   onSubmit() {
     this.router.navigate(['/home']);
-  //   this.authService.login(this.form).pipe(
-  //     switchMap(() => this.tokenStorageService.getCurrentUtilisateur())
-  //   ).subscribe(
-  //     userData => {
-  //       this.currentUtilisateur = userData;
-  //       //console.log(this.currentUtilisateur); CHECKED
-  //       this.utilisateurService.getUserAccesses(this.currentUtilisateur.userId).subscribe(
-  //         data => {
-  //           let userAccesses: Access[] = data;
-  //           for(const access of userAccesses){
-  //             if (access.authority == "MANAGE_STAGIAIRES"){
-  //               this.router.navigate(['/home/stagiaires']);
-  //               break;
-  //             }
-  //             if (access.authority == "MANAGE_STAGES"){
-  //               this.router.navigate(['/home/stages']);
-  //               break;
-  //             }
-  //           }
-  //         },
-  //         error => {
-  //           console.log(error);
-  //         }
-  //       );
-  //     },
-  //     error => {
-  //       console.log(error);
-  //       if (error.status === 403) {
-  //         this.errorMessage = "Accès interdit. Veuillez vérifier vos informations d'identification.";
-  //       }
-  //       else {
-  //         this.errorMessage = "Une erreur s'est produite lors de l'authentification.";
-  //       }
-  //     }
-  //   );
   }
 }

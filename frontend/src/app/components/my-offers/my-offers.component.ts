@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Candidacy } from 'src/app/models/candidacy';
 import { FileData } from 'src/app/models/fileData';
 import { Offer } from 'src/app/models/offer';
-import { User } from 'src/app/models/user';
 import { CandidacyService } from 'src/app/services/candidacy.service';
 import { FileService } from 'src/app/services/file.service';
 import { GlobalService } from 'src/app/services/global.service';

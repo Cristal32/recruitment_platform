@@ -127,6 +127,14 @@ App layout:
 You can find the different views of the application in the folder `assets/views`
 
 ## Trying out the code
+
 To test out the code yourself, clone the project:
 ``` 
 git clone https://github.com/Cristal32/recruitment_platform.git 
+```
+
+## Perspectives
+
+This project is unfinished. It still needs a lot more refinement, and we have yet to implement the security aspect by implementing authentication and securing access to all endpoints using the Spring Security dependency. 
+
+

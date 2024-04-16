@@ -36,8 +36,8 @@ export class CandidacyService {
     console.log(formData);
     console.log(cvFile.name);
 
-    const stagiaireJson = JSON.stringify(candidate);
-    formData.append('candidateData', new Blob([stagiaireJson], { type: 'application/json' }));
+    const candidateJson = JSON.stringify(candidate);
+    formData.append('candidateData', new Blob([candidateJson], { type: 'application/json' }));
 
     return this.http.request('post', `${this.apiServerUrl}/candidacy/addWithCv`, {
       body: formData,
