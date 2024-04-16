@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Offer } from '../models/offer';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OfferService {
-  private apiServerUrl = 'http://localhost:8080/api';
+  constructor(private http: HttpClient, private globalService: GlobalService) { }
 
-  constructor(private http: HttpClient) { }
+  private apiServerUrl = this.globalService.apiServerUrl;
 
   public getAllOffers(): Observable<Offer[]>{
     return this.http.get<Offer[]>(`${this.apiServerUrl}/offer/getAll`);

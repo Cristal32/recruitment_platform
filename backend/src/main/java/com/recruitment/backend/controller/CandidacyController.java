@@ -1,9 +1,11 @@
 package com.recruitment.backend.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,10 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.recruitment.backend.model.Candidacy;
+import com.recruitment.backend.model.FileData;
 import com.recruitment.backend.service.CandidacyService;
+import com.recruitment.backend.service.FileDataService;
 
 import jakarta.transaction.Transactional;
 
@@ -27,9 +33,13 @@ public class CandidacyController {
 	@Autowired
 	private final CandidacyService candidacyService;
 	
+	@Autowired
+	private final FileDataService fileDataService;
+	
 	//constructeur
-	public CandidacyController(CandidacyService candidacyService) {
+	public CandidacyController(CandidacyService candidacyService, FileDataService fileDataService) {
 		this.candidacyService = candidacyService;
+		this.fileDataService = fileDataService;
 	}
 	
 	// ================================= GET Mapping =================================
@@ -57,6 +67,20 @@ public class CandidacyController {
 	public ResponseEntity<Candidacy> addCandidacy(@RequestBody Candidacy candidacy){
 		Candidacy new_candidacy = candidacyService.addCandidacy(candidacy);
 		return new ResponseEntity<>(new_candidacy, HttpStatus.CREATED); 
+	}
+	
+	@PostMapping(value = "/addWithCv", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+	public ResponseEntity<?> addCandidateWithCv(@RequestPart("candidateData") Candidacy candidacy, @RequestPart("file") MultipartFile cvFile) throws IOException{
+		try {
+			if(cvFile != null && !cvFile.isEmpty()) {
+				FileData uploadFile = fileDataService.uploadFile(cvFile);
+				candidacy.setCv(uploadFile);
+			}
+			Candidacy newCandidacy = candidacyService.addCandidacy(candidacy);
+			 return ResponseEntity.status(HttpStatus.CREATED).body("Candidate created : " + newCandidacy);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error : " + e.getMessage());
+		}
 	}
 	
 	// ================================= PUT Mapping =================================

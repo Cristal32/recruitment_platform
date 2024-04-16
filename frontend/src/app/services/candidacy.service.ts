@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { Candidacy } from '../models/candidacy';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidacyService {
 
-  private apiServerUrl = 'http://localhost:8080/api';
+  constructor(private http: HttpClient, private globalService: GlobalService) { }
 
-  constructor(private http: HttpClient) { }
+  private apiServerUrl = this.globalService.apiServerUrl;
 
   public getAllCandidacies(): Observable<Candidacy[]>{
     return this.http.get<Candidacy[]>(`${this.apiServerUrl}/candidacy/getAll`);
@@ -20,8 +21,24 @@ export class CandidacyService {
     return this.http.get<Candidacy[]>(`${this.apiServerUrl}/candidacy/getByOffer/${offerId}`);
   }
 
-  public addCandidacy(offer: Candidacy): Observable<Candidacy>{
-    return this.http.post<Candidacy>(`${this.apiServerUrl}/candidacy/add`, offer);
+  public addCandidacy(candidate: Candidacy): Observable<Candidacy>{
+    return this.http.post<Candidacy>(`${this.apiServerUrl}/candidacy/add`, candidate);
+  }
+
+  public addCandidacyWithCv(candidate: Candidacy, cvFile: File): Observable<any>{
+    const formData = new FormData();
+    formData.append('file', cvFile);
+
+    console.log(formData);
+    console.log(cvFile.name);
+
+    const stagiaireJson = JSON.stringify(candidate);
+    formData.append('candidateData', new Blob([stagiaireJson], { type: 'application/json' }));
+
+    return this.http.request('post', `${this.apiServerUrl}/candidacy/addWithCv`, {
+      body: formData,
+      responseType: 'text'
+    });
   }
 
   public updateCandidacy(offer: Candidacy): Observable<Candidacy>{

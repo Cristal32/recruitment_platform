@@ -5,6 +5,8 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class GlobalService {
+  public apiServerUrl = 'http://localhost:8080/api';
+
   currentUtilisateur: User = 
   // {
   //   id: 1,
