@@ -8,4 +8,5 @@ export class Candidacy{
     offer: Offer = new Offer();
     desc: string = '';
     cv: CvFile = new CvFile();
+    status: number = 0;
 }

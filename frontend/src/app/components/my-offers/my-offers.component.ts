@@ -4,6 +4,7 @@ import { Candidacy } from 'src/app/models/candidacy';
 import { Offer } from 'src/app/models/offer';
 import { User } from 'src/app/models/user';
 import { CandidacyService } from 'src/app/services/candidacy.service';
+import { GlobalService } from 'src/app/services/global.service';
 import { OfferService } from 'src/app/services/offer.service';
 
 @Component({
@@ -19,13 +20,7 @@ export class MyOffersComponent implements OnInit{
   selectedCandidates: Candidacy[] = []
   selectedCandidate: Candidacy = new Candidacy();
 
-  currentUser: User = {
-    "id": 2,
-    "email": "safae@dxc.com",
-    "pwd": "safae23",
-    "name": "Safae",
-    "lastName": "Ibrahimi"
-  };
+  currentUser = this.globalService.currentUtilisateur;
   listMyOffers: Offer[] = [];
   filteredListMyOffers: Offer[] = [];
   candidates: Candidacy[] = [];
@@ -48,7 +43,7 @@ export class MyOffersComponent implements OnInit{
   };
 
   // Constructor
-  constructor(private offerService: OfferService, private candidacyService: CandidacyService){}
+  constructor(private offerService: OfferService, private candidacyService: CandidacyService, private globalService: GlobalService){}
 
   ngOnInit(){
     this.getAllMyOffers(this.currentUser.id);
@@ -132,7 +127,7 @@ export class MyOffersComponent implements OnInit{
     // console.log(this.createdOffer);
     this.offerService.addOffer(this.createdOffer).subscribe(
       data => {
-        // console.log(data);
+        console.log(data);
         window.location.reload();
       },
       error => console.log(error)
@@ -150,7 +145,13 @@ export class MyOffersComponent implements OnInit{
   }
 
   rejectCandidateForm(){
-
+    this.candidacyService.rejectCandidacy(this.selectedCandidate.user.id, this.selectedCandidate.offer.id).subscribe(
+      data => {
+        // console.log(data);
+        window.location.reload();
+      },
+      error => console.log(error)
+    );
   }
 }
 

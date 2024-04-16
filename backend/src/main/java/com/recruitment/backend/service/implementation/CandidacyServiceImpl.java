@@ -61,7 +61,7 @@ public class CandidacyServiceImpl implements CandidacyService {
     public boolean validateCandidacy(int offerId, int userId) {
         Candidacy candidacy = findCandidacyById(offerId, userId);
         if (candidacy != null) {
-            candidacy.setStatus(Candidacy.CandidateStatus.ACCEPTED);
+            candidacy.setStatus(1);
             candidacyDao.save(candidacy);
             return true; // Operation successful
         } else {
@@ -73,7 +73,7 @@ public class CandidacyServiceImpl implements CandidacyService {
     public boolean rejectCandidacy(int offerId, int userId) {
         Candidacy candidacy = findCandidacyById(offerId, userId);
         if (candidacy != null) {
-            candidacy.setStatus(Candidacy.CandidateStatus.REJECTED);
+            candidacy.setStatus(-1);
             candidacyDao.save(candidacy);
             return true; // Operation successful
         } else {

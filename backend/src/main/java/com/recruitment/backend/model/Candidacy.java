@@ -8,8 +8,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -45,13 +43,12 @@ public class Candidacy implements Serializable{
 	@JoinColumn(name = "cv_id")
 	private FileData cv;
 	
-	@Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private CandidateStatus status;
+    private int status;
 	
 	// Constructors
 	public Candidacy() {
-		this.status = CandidateStatus.PENDING;
+		this.status = 0; // 0: PENDING, 1: ACCEPTED, -1: REJECTEDint
 	}
 	
 	public Candidacy(User user, Offer offer, String desc, FileData cv) {
@@ -59,7 +56,7 @@ public class Candidacy implements Serializable{
 		this.offer = offer;
 		this.desc = desc;
 		this.cv = cv;
-		this.status = CandidateStatus.PENDING;
+		this.status = 0;
 	}
 	
 	// Getters
@@ -83,7 +80,7 @@ public class Candidacy implements Serializable{
 		return cv;
 	}
 	
-	public CandidateStatus getStatus() {
+	public int getStatus() {
 	    return status;
 	}
 	
@@ -108,7 +105,7 @@ public class Candidacy implements Serializable{
 		this.cv = cv;
 	}
 	
-	public void setStatus(CandidateStatus status) {
+	public void setStatus(int status) {
 	    this.status = status;
 	}
 	
@@ -156,12 +153,5 @@ public class Candidacy implements Serializable{
 	    	this.offerId = offerId;
 	    }
 	}
-	
-	// Enum for status
-    public enum CandidateStatus {
-        PENDING,
-        ACCEPTED,
-        REJECTED;
-    }
 
 }

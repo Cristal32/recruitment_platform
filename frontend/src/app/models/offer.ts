@@ -13,4 +13,5 @@ export class Offer{
     roleRespos: string = '';
     startDate: Date = new Date() || null;
     postDate: Date = new Date() || null;
+    status: number = 0;
 }

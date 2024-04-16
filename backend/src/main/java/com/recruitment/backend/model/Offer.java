@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -66,13 +64,12 @@ public class Offer implements Serializable {
     @Column(name = "post_date")
     private Date post_date;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private OfferStatus status;
+    private int status;
 
     // Constructors
     public Offer() {
-    	this.status = OfferStatus.OPEN;
+    	this.status = 0; // 0: OPEN, 1: CLOSED
     }
 
     public Offer(String employer, User poster, String title, String hq_location, String exp_years, 
@@ -90,7 +87,7 @@ public class Offer implements Serializable {
         this.role_reqs = role_reqs;
         this.start_date = start_date;
         this.post_date = post_date;
-        this.status = OfferStatus.OPEN;
+        this.status = 0;
     }
 
     // Getters
@@ -146,7 +143,7 @@ public class Offer implements Serializable {
         return post_date;
     }
 
-    public OfferStatus getStatus() {
+    public int getStatus() {
         return status;
     }
     
@@ -203,13 +200,7 @@ public class Offer implements Serializable {
         this.post_date = post_date;
     }
 
-    public void setStatus(OfferStatus status) {
+    public void setStatus(int status) {
         this.status = status;
-    }
-
-    // Enum for status
-    public enum OfferStatus {
-        OPEN,
-        CLOSED;
     }
 }

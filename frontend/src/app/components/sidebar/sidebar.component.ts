@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,17 +11,11 @@ import { User } from 'src/app/models/user';
 export class SidebarComponent implements OnInit {
   currentUser: any;
   currentUtilisateur: User = new User();
-  constructor(private router: Router) { }
+  constructor(private router: Router, private globalService: GlobalService) { }
   // constructor(private router: Router, private utilisateurService: UtilisateurService,private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.currentUtilisateur = {
-      "id": 1,
-      "email": "mery@gmail.com",
-      "pwd": "mery32",
-      "name": "Meryem",
-      "lastName": "El Karati"
-    };
+    this.currentUtilisateur = this.globalService.currentUtilisateur;
 
       // this.currentUser = JSON.parse(localStorage.getItem('currentUser')|| '{}');
       // this.getCurrentUser();
