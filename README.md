@@ -22,7 +22,7 @@ This is a simple project for a web platform that allows recruiters to submit job
 
 * Global architecture:
 
-<img src="assets/global_architecture.PNG" alt="recruitment_class_diag" width="800" height="400">
+<img src="assets/global_architecture.PNG" alt="recruitment_class_diag" width="700" height="300">
 
 ## Content
 
@@ -47,14 +47,17 @@ The application will be responding on port 8080.
 
 ### 2. MVC design pattern
 
-Each entity of our class diagram will have a number of specific classes and interfaces dedicated to it:
-- Model: represents a data entity methods.
-- Repository or DAO(Data Access Object): defines the contract for accessing and manipulating entities in the database.
-- Service Interface
-- Service Implementation
-- Controller
+Each entity of our class diagram will have a number of specific classes and interfaces dedicated to it organised in layers:
 
-<img src="assets/MVC_pattern.PNG" alt="recruitment_class_diag" width="600" height="400">
+- **Model:** represents a data entity.
+- **Repository or DAO(Data Access Object):** defines the contract for accessing and manipulating entities in the database.
+- **Service Interface:** defines the contract for interacting with entities using CRUD operations and other business logic related to the entity.
+- **Service Implementation:** implements the service interface.
+- **Controller:** handles HTTP requests related to the entity.
+
+<img src="assets/spring_mvc_layers.png" alt="recruitment_class_diag" width="800" height="300">
+
+<img src="assets/MVC_pattern.PNG" alt="recruitment_class_diag" width="500" height="400">
 
 ## 1. Database connexion & configuration
 
