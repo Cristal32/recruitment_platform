@@ -18,11 +18,11 @@ This is a simple project for a web platform that allows recruiters to submit job
 
 * Class Diagram:
 
-<img src="assets/class_diag.png" alt="recruitment_class_diag" width="800" height="400">
+<img src="assets/class_diag.png" alt="recruitment class diag" width="800" height="400">
 
 * Global architecture:
 
-<img src="assets/global_architecture.PNG" alt="recruitment_class_diag" width="700" height="300">
+<img src="assets/global_architecture.PNG" alt="global architecture" width="700" height="300">
 
 ## Content
 
@@ -55,9 +55,11 @@ Each entity of our class diagram will have a number of specific classes and inte
 - **Service Implementation:** implements the service interface.
 - **Controller:** handles HTTP requests related to the entity.
 
-<img src="assets/spring_mvc_layers.png" alt="recruitment_class_diag" width="800" height="300">
+<img src="assets/spring_mvc_layers.png" alt="spring mvc layers" width="800" height="300">
 
-<img src="assets/MVC_pattern.PNG" alt="recruitment_class_diag" width="500" height="400">
+Class diagram of the MVC design pattern for an entity:
+
+<img src="assets/MVC_pattern.png" alt="mvc pattern" width="500" height="400">
 
 ## 1. Database connexion & configuration
 
