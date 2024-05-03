@@ -12,6 +12,7 @@
 	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>backend</name>
+	<packaging>jar</packaging>
 	<description>Multiple-client recruitment platform where companies post positions to which candidates can apply for</description>
 	<properties>
 		<java.version>17</java.version>
