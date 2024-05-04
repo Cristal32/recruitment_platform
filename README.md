@@ -142,7 +142,7 @@ docker compose up -d
 
 - Go to the URL: ```http://localhost:4200/``` to access the client side app.
 
-- Since this project is still incomplete especially with the authentication part, there is no user management yet, which might hinder testing the app's full functionalities. I'll make sure to complete in the near future. As such, for now, before testing the functionalities, a temporary user needs to be created first:
+- Since this project is still incomplete especially with the authentication part, there is no user management yet, which might hinder testing the app's full functionalities. I'll make sure to complete it in the near future. As such, for now, before testing the functionalities, a temporary user needs to be created first:
 ```
 {
     id: 1,
@@ -152,7 +152,7 @@ docker compose up -d
     lastName: 'El Karati'
   };
 ```
-This user will represent the current authenticated user, we can create many others, and switch between them to represent the current user in the frontend side's global service located in: ```frontend/src/app/services/global.service.ts ```
+This user will represent the current authenticated user, we can create many others, and switch between them to represent the current user in the frontend side's [global service](https://github.com/Cristal32/recruitment_platform/blob/main/frontend/src/app/services/global.service.ts)
 
 ## Perspectives
 
