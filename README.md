@@ -112,7 +112,7 @@ ng serve
 
 ### 2. App layout
 
-The frontend layout is composed of different blocs, following the MVC design pattern as well.
+The frontend layout is composed of different blocs, following the MVC pattern as well.
 
 * The code for each interface is contained within a **component**, along with its html, css and ts files.
 * Since we're using typescript which is a staticly typed language, we can define in a **model** layer, the different entities already establshed in our backend.  
