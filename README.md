@@ -128,10 +128,19 @@ You can find the different views of the application in the folder `assets/views`
 
 ## Trying out the code
 
-To test out the code yourself, clone the project:
+To test out the code yourself:
+
+- Clone the project:
 ``` 
 git clone https://github.com/Cristal32/recruitment_platform.git 
 ```
+
+- Execute the docker compose script (that will rely on docker-compose.yml) that will build images for the postgres database, backend and frontend, and starts the containers for each service:
+```
+docker compose up -d
+```
+
+- Go to the URL: ```http://localhost:4200/``` to access the client side app.
 
 ## Perspectives
 
