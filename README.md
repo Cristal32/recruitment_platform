@@ -142,6 +142,18 @@ docker compose up -d
 
 - Go to the URL: ```http://localhost:4200/``` to access the client side app.
 
+- Since this project is still incomplete especially with the authentication part, there is no user management yet, which might hinder testing the app's full functionalities. I'll make sure to complete it in the near future. As such, for now, before testing the functionalities, a temporary user needs to be created first:
+```
+{
+    id: 1,
+    email: 'mery@gmail.com',
+    pwd: 'mery32',
+    name: 'Meryem',
+    lastName: 'El Karati'
+  };
+```
+This user will represent the current authenticated user, we can create many others, and switch between them to represent the current user in the frontend side's [global service](https://github.com/Cristal32/recruitment_platform/blob/main/frontend/src/app/services/global.service.ts)
+
 ## Perspectives
 
 This project is unfinished. It still needs a lot more refinement, and we have yet to implement the security aspect by implementing authentication and securing access to all endpoints using the Spring Security dependency. 
