@@ -142,6 +142,8 @@ docker compose up -d
 
 - Go to the URL: ```http://localhost:4200/``` to access the client side app.
 
+- Since this project is still incomplete especially with the authentication part, there is no user management yet, which might hinder testing the app's full functionalities. I'll make sure to complete in the near future.
+
 ## Perspectives
 
 This project is unfinished. It still needs a lot more refinement, and we have yet to implement the security aspect by implementing authentication and securing access to all endpoints using the Spring Security dependency. 
