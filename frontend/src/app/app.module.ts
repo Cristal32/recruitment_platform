@@ -10,7 +10,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { MyOffersComponent } from './components/my-offers/my-offers.component';
 import { MyApplicationsComponent } from './components/my-applications/my-applications.component';
-import { CandidatesComponent } from './components/candidates/candidates.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -21,8 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarComponent,
     JobsComponent,
     MyOffersComponent,
-    MyApplicationsComponent,
-    CandidatesComponent
+    MyApplicationsComponent
   ],
   imports: [
     BrowserModule,
