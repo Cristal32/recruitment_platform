@@ -8,20 +8,20 @@ export class GlobalService {
   public apiServerUrl = 'http://localhost:8080/api';
 
   currentUtilisateur: User = 
-  // {
-  //   id: 1,
-  //   email: 'mery@gmail.com',
-  //   pwd: 'mery32',
-  //   name: 'Meryem',
-  //   lastName: 'El Karati'
-  // };
   {
-    "id": 2,
-    "email": "safae@dxc.com",
-    "pwd": "safae23",
-    "name": "Safae",
-    "lastName": "Ibrahimi"
-};
+    id: 1,
+    email: 'mery@gmail.com',
+    pwd: 'mery32',
+    name: 'Meryem',
+    lastName: 'El Karati'
+  };
+//   {
+//     "id": 2,
+//     "email": "safae@dxc.com",
+//     "pwd": "safae23",
+//     "name": "Safae",
+//     "lastName": "Ibrahimi"
+// };
 //   {
 //     "id": 3,
 //     "email": "elasri@um5.ac.ma",
