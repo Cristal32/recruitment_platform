@@ -17,10 +17,10 @@ export class GlobalService {
   };
 //   {
 //     "id": 2,
-//     "email": "safae@dxc.com",
+//     "email": "safae@gmail.com",
 //     "pwd": "safae23",
 //     "name": "Safae",
-//     "lastName": "Ibrahimi"
+//     "lastName": "el hassani"
 // };
 //   {
 //     "id": 3,
