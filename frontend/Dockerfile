@@ -1,20 +1,17 @@
 # Use official Node.js image as base
-FROM node:14
+FROM node:latest
 
 # Set working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to container
-COPY package*.json ./
+# Copy the rest of the application code
+COPY . .
 
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application code
-COPY . .
-
-# Expose the port the app runs on
+# Expose port 4200 for Angular development server
 EXPOSE 4200
 
-# Start the Angular app
+# Start the Angular development server
 CMD ["npm", "start"]

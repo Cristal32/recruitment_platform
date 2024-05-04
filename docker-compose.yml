@@ -16,13 +16,13 @@ services:
       - postgres
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/Recruitment
-      SPRING_DATASOURCE_USERNAME: meryempfa
+      SPRING_DATASOURCE_USERNAME: intern
       SPRING_DATASOURCE_PASSWORD: password
 
   postgres:
     image: postgres:latest
     environment:
-      POSTGRES_USER: meryempfa
+      POSTGRES_USER: intern
       POSTGRES_PASSWORD: password
       POSTGRES_DB: Recruitment
     ports:
