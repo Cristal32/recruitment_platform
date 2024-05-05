@@ -61,7 +61,7 @@ Each entity of our class diagram will have a number of specific classes and inte
 
 <img src="assets/spring_mvc_layers.png" alt="spring mvc layers" width="800" height="300">
 
-Class diagram of the MVC design pattern for an entity:
+Class diagram of the MVC pattern for an entity:
 
 <img src="assets/MVC_pattern.png" alt="mvc pattern" width="500" height="400">
 
