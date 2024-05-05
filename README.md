@@ -49,7 +49,7 @@ Add Maven dependencies:
 
 The application will be responding on port 8080.
 
-### 2. MVC design pattern
+### 2. MVC pattern
 
 Each entity of our class diagram will have a number of specific classes and interfaces dedicated to it organised in layers:
 
