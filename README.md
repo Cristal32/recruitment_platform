@@ -153,10 +153,10 @@ docker compose up -d
 ```
 {
     id: 1,
-    email: 'mery@gmail.com',
-    pwd: 'mery32',
-    name: 'Meryem',
-    lastName: 'El Karati'
+    email: 'john@gmail.com',
+    pwd: 'john123',
+    name: 'John',
+    lastName: 'Doe'
   };
 ```
 This user will represent the current authenticated user, we can create many others, and switch between them to represent the current user in the frontend side's [global service](https://github.com/Cristal32/recruitment_platform/blob/main/frontend/src/app/services/global.service.ts)
